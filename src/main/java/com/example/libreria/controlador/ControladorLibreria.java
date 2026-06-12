@@ -6,6 +6,7 @@ import com.example.libreria.servicio.ServicioLibro;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,5 +40,15 @@ public class ControladorLibreria {
         return libroRepositorio.buscaID(idLibro)
                 .map(ResponseEntity::ok)                  // Si lo encuentra -> HTTP 200 OK + JSON
                 .orElse(ResponseEntity.notFound().build());// Si está vacío  -> HTTP 404 NOT FOUND
+    }
+
+    @GetMapping("/clone")
+    public String probarClone(){
+        Libros original=new Libros(1L,"Miguel de Cervantes", "El Quijote", LocalDate.of(1605, 1, 16));
+        Libros copia=original.clone();
+        copia.setIdLibro(8);
+        copia.setTitulo("Copia de prueba");
+
+        return "Original: "+original.toString() + " | Copia: "+copia.toString();
     }
 }
