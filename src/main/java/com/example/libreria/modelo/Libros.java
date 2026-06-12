@@ -65,4 +65,7 @@ public class Libros implements Cloneable{
             throw new AssertionError();
         }
     }
+
+    public void remove(Libros existente) {
+    }
 }
