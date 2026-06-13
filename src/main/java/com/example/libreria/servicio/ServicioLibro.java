@@ -3,6 +3,7 @@ package com.example.libreria.servicio;
 import com.example.libreria.librosRepositorio.IRepositorioLibros;
 import com.example.libreria.librosRepositorio.RepositorioLibros;
 import com.example.libreria.modelo.Libros;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class ServicioLibro implements IServicioLibro{
 
     private final IRepositorioLibros repositorioLibros;
 
+    @Autowired
     public ServicioLibro(IRepositorioLibros repositorioLibros) {
         this.repositorioLibros = repositorioLibros;
     }
